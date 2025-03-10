@@ -15,6 +15,10 @@ console.log(media.toString(2)) // em binário
 console.log(typeof media) // Number
 console.log(typeof Number) // Number é uma função
 console.log("10" / 2) // 5
+console.log("10" + 2) // 102
+console.log("10" - 2) // 8
+console.log("10" * 2) // 20
+console.log("10" / 2) // 5
 console.log("Show!" * 2) // NaN
 console.log(0.1 + 0.7) // 0.7999999999999999
 // console.log(10.toString()) // não funciona
