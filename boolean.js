@@ -16,12 +16,12 @@ console.log(!!Infinity)
 console.log(!!(isAtivo = true))
 console.log("*********")
 console.log("Os falsos...")
-console.log(!!0)
-console.log(!!'')
-console.log(!!null)
-console.log(!!NaN)
+console.log(!!0) //retorna false
+console.log(!!'') //retorna false
+console.log(!!null) //retorna false
+console.log(!!NaN) //retorna false
 console.log(!!undefined)
-console.log(!!(isAtivo = false))
+console.log(!!(isAtivo = false)) // Retorna false
 console.log("*********")
 console.log("Para finalizar...")
 console.log(!!('' || null || 0 || ' '))// Retorna true
