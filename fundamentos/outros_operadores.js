@@ -44,4 +44,37 @@ console.log("d1.getTime()===d2.getTime()", d1.getTime()===d2.getTime()) //V
 console.log("undefined == null", undefined == null) //V
 console.log("undefined === null", undefined === null)//F
 
+console.log("Operadores lógicos")
+/*
+v e v -> v
+v e f -> f
+f e ? -> f
 
+v ou ? -> V
+f ou v -> v
+f ou f -> f
+ou exclusivo
+v xor v -> f
+v xor f -> v
+f xor v -> v
+f xor f -> f
+
+!v -> f
+!f -> v
+
+
+*/
+
+function compras(trabalho1,trabalho2){
+    const comprarSorvete = trabalho1 ||trabalho2
+    const comprartv50 = trabalho1 && trabalho2 
+    //const comprartv32 = !!(trabalho1 ^ trabalho2)//bitwise xor exclusivo
+    const comprartv32 = trabalho1 != trabalho2  
+    const matersaudavel = !comprarSorvete // operador unário
+    return { comprarSorvete, comprartv50, comprartv32, matersaudavel}
+}
+
+console.log(compras(true,true))
+console.log(compras(true,false))
+console.log(compras(false,true))
+console.log(compras(false,false))
