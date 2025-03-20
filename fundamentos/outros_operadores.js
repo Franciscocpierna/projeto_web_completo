@@ -78,3 +78,19 @@ console.log(compras(true,true))
 console.log(compras(true,false))
 console.log(compras(false,true))
 console.log(compras(false,false))
+
+console.log("\noperadores unarios") 
+let num1 = 1
+let num2 = 2
+num1++
+console.log("num1 = ", num1)
+--num1
+console.log("num1 = ", num1)
+
+console.log("++num1 === num2--",++num1 === num2--)
+console.log("num1 === num2",num1 === num2)
+console.log("\noperadores ternários") 
+
+const resultado = nota => nota >= 7 ? "Aprovado" : "Reprovado" 
+console.log(resultado(7.1))
+console.log(resultado(6.9))
