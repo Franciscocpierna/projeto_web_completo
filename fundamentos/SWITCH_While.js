@@ -32,6 +32,16 @@ function basico(min,max){
   return Math.floor(valor)
 
 }
+
+console.log('\nUsando DO WHILE')
+function basico1(min,max){
+  const valor = Math.random() * (max - min) + min 
+  console.log(" Math.random() = "+  Math.random())
+  valor1 =(max - min) + min 
+  console.log("(max - min) + min = "+valor1 )
+  return Math.floor(valor)
+
+}
 let opcao = 0
 
 while (opcao != -1) {
@@ -42,3 +52,16 @@ while (opcao != -1) {
 
 }
 console.log('\nAté a proxima')
+
+let opcao1 = -1
+do  {
+
+    opcao1 = basico1(-1,10)
+    console.log(`opção escolhida foi ${opcao1}`)
+
+
+}while (opcao1 != -1)
+
+console.log('\nAté a proxima')
+
+
