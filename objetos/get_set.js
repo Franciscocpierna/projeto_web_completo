@@ -13,5 +13,7 @@ const sequencia = {
 console.log(sequencia.valor, sequencia.valor)
 sequencia.valor = 1000
 console.log(sequencia.valor, sequencia.valor)
-sequencia.valor = 900
+sequencia.valor = 900 // não altera o valor, pois 900 < 1000
+console.log(sequencia.valor, sequencia.valor)
+sequencia.valor = 2000 // altera o valor, pois 2000 > 1000
 console.log(sequencia.valor, sequencia.valor)

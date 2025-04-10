@@ -1,6 +1,6 @@
 
 console.log("Arrow 1")
-/*let dobro = function(a) {
+let dobro = function(a) {
    return 2 * a
 }
 
@@ -31,7 +31,7 @@ console.log(ola())
 ola = _ => 'OLaa'
 console.log(ola()) 
 
-console.log("Arrow 2")
+/*console.log("Arrow 2")
 function Pessoa(){
     this.idade=0
     setInterval(() => {
@@ -44,11 +44,11 @@ function Pessoa(){
 new Pessoa */
 
 console.log("Arrow 3")
-
-let comparaComThis = function (param) {
-    console.log(param===this)
+/*
+let comparaComThis = function (param) {// função normal
+    console.log(param===this)// compara o parametro com this
 }
-comparaComThis(global)//true
+comparaComThis(global)//true // compara o parametro com global, que é o objeto global do Node.js
 
 const obj = {}
 comparaComThis=comparaComThis.bind(obj) // essa linha aponta para objeto obj
@@ -61,4 +61,4 @@ comparaComThisArrow(module.exports)
 comparaComThisArrow(this)
 comparaComThisArrow = comparaComThisArrow.bind(obj)
 comparaComThisArrow(obj)
-comparaComThisArrow(module.exports)
+comparaComThisArrow(module.exports) */
