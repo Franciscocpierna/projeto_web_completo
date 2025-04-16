@@ -1,12 +1,24 @@
 const porta = 3003
 const express = require('express')
 const app = express()
+const bancoDeDados = require('C:/projeto_web_completo/node/projeto/src/bancodedados.js')//importar o banco de dados
 
-
-
+app
 app.get('/produtos', (req, res, next) => {
-    res.send({ nome: 'Notebook', preco: 123.45 })//converter para json
+    res.send(bancoDeDados.getProdutos())//retorna os produtos em formato json
    
+})
+
+app.get('/produtos/:id', (req, res, next) => {
+    res.send(bancoDeDados.getProduto(req.params.id))//retorna o produto com o id informado na url
+})
+
+app.post('/produtos', (req, res, next) => {
+    const produto = bancoDeDados.salvarProduto({
+        nome: req.body.nome,
+        preco: req.body.preco
+    })
+    res.send(produto)//retorna o produto salvo em formato json
 })
 
 app.listen(porta, () => {
