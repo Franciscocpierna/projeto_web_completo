@@ -22,7 +22,7 @@ app.post('/produtos', (req, res, next) => {
     res.send(produto)//retorna o produto salvo em formato json
 })
 
-app.put('/produtos:id', (req, res, next) => {
+app.put('/produtos/:id', (req, res, next) => {
     const produto = bancoDeDados.salvarProduto({
         id: req.params.id,
         nome: req.body.nome,
@@ -31,7 +31,29 @@ app.put('/produtos:id', (req, res, next) => {
     res.send(produto)//retorna o produto salvo em formato json
 })
 
-app.delete('/produtos:id', (req, res, next) => {
+
+/*app.put('/produtos/:id', (req, res, next) => {
+    const id = req.params.id;
+    
+    // Primeiro verifica se o produto existe
+    const produtoExistente = bancoDeDados.getProdutoById(id);
+    
+    if (!produtoExistente) {
+      return res.status(404).send({ erro: `Produto com id ${id} não encontrado` });
+    }
+    
+    // Então atualiza
+    const produto = bancoDeDados.salvarProduto({
+      id: req.params.id,
+      nome: req.body.nome,
+      preco: req.body.preco
+    });
+    
+    res.send(produto);
+  });
+  */
+
+app.delete('/produtos/:id', (req, res, next) => {
     const produto = bancoDeDados.excluirProduto(req.params.id)
     res.send(produto)//retorna o produto salvo em formato json
 })
