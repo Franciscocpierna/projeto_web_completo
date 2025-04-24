@@ -1,4 +1,4 @@
-const tecnologias = new Map();
+const tecnologias = new Map();// cria um novo Map
 
 tecnologias.set('react', { framework: false  });  // adiciona o elemento com chave 'react' e valor { framework: false } 
 tecnologias.set('angular', { framework: true });

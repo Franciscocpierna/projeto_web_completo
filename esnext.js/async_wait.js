@@ -10,7 +10,7 @@ const getTurma = (letra, callback) => {
                 resultado += dados; // concatena os dados recebidos
             });
 
-            res.on('end', () => {
+            res.on('end', () => { // quando a requisição termina
                 try {
                     resolve(JSON.parse(resultado)); // converte o resultado para JSON e resolve a promise
                 } catch (e) {
