@@ -1,32 +1,38 @@
-<p>
-    <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="muro da cidade" width="513" height="342" title="Muro da cidade por Tarso "/>  
-</p>
+<div wm-slider>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem1.jpg" alt="muro da cidade" width="513" height="342" title="Muro da cidade por Tarso "/>  
+    </p>
 
-<p>
-    <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro Cod3r" height="342"/>  
-</p>
+    <p>
+        <img src="http://files.cod3r.com.br/curso-web/imagem2.gif" alt="Intro Cod3r" height="342"/>  
+    </p>
 
-<p class="circular">
-    <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de janeiro"  height="342"/>
-</p>
+    <p class="circular">
+        <img src="http://files.cod3r.com.br/curso-web/imagem3.png" alt="Rio de janeiro"  height="342"/>
+    </p>
 
-<p class="texto">
-    <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar"  height="50" align="left">
-    Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore molestias nihil consectetur? Quas quidem animi illum ab! Suscipit a eligendi vel. Aperiam ex voluptate distinctio nemo doloremque consequuntur exercitationem nam.
-</p>
-<p class="cidade"></p>
+    <p class="texto">
+        <img src="http://files.cod3r.com.br/curso-web/avatar.jpg" alt="Avatar"  height="50" align="left">
+        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Dolore molestias nihil consectetur? Quas quidem animi illum ab! Suscipit a eligendi vel. Aperiam ex voluptate distinctio nemo doloremque consequuntur exercitationem nam.
+    </p>
+    <p class="cidade"></p>
 
-<p>
-    <picture>
-        <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
-          media="(min-width: 600px)">
+    <p>
+        <picture>
+            <source srcset="http://files.cod3r.com.br/curso-web/logo-larga.png"
+            media="(min-width: 600px)">
+            <img src="http://files.cod3r.com.br/curso-web/logo-estreita.png" alt="Logo">     
 
 
-
-    </picture>
-</p>
-
+        </picture>
+    </p>
+</div>
 <style>
+    p {
+        position: absolute;
+        display: none;
+        
+    }
     .circular {
         width: 513px;
         background-color: #444;
@@ -49,3 +55,23 @@
         background-size: 200%;
     }
 </style>
+
+<script>
+    function mover(elen,inicio, fim,passo,callback) {
+       const novoInicio = inicio - passo;
+        if(novoInicio >= fim) {
+            elen.style.Left = novoInicio + 'px';
+            setTimeout(() => mover(elen, novoInicio, fim, passo, callback), 7);
+        } else {
+            callback()
+        }
+    }
+    const p = document.querySelector('[wm-slider] > p')
+    p.style.display = 'block'
+    mover(p, 1500, -520, 5, () => {
+        
+       console.log('Fim do movimento')
+            
+    })
+    
+</script>
