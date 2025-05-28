@@ -1,16 +1,20 @@
+/* Define a fonte personalizada Oswald */
 @font-face {
     font-family: 'Oswald';
     src: url('../fonts/Oswald-Regular.ttf') format('truetype');
 }
 
+/* Aplica a fonte Oswald para todos os elementos */
 * {
     font-family: 'Oswald', sans-serif;
 }
 
+/* Define a altura total para o elemento html */
 html {
     height: 100%;
 }
 
+/* Remove a margem padrão do body, define cor de fundo, cor do texto e altura total */
 body {
     margin: 0;
     background-color: #0D262D;
@@ -18,6 +22,7 @@ body {
     height: 100%;
 }
 
+/* Define layout flexível em coluna, centraliza itens e altura mínima para o conteúdo */
 .conteudo {
     display: flex;
     flex-direction: column;
@@ -25,6 +30,7 @@ body {
     min-height: 100%;
 }
 
+/* Estiliza as divs dentro de .exercicio: tamanho da fonte, borda, padding e margem */
 .exercicio div {
     font-size: 3em;
     border: solid 5px #fff;
@@ -32,22 +38,27 @@ body {
     margin: 10px;
 }
 
+/* Define cor de fundo para a primeira div dentro de .exercicio */
 .exercicio div:nth-of-type(1) {
     background-color: darkgoldenrod;
 }
 
+/* Define cor de fundo para a segunda div dentro de .exercicio */
 .exercicio div:nth-of-type(2) {
     background-color: crimson;
 }
 
+/* Define cor de fundo para a terceira div dentro de .exercicio */
 .exercicio div:nth-of-type(3) {
     background-color: darkcyan;
 }
 
+/* Define cor de fundo para a quarta div dentro de .exercicio */
 .exercicio div:nth-of-type(4) {
     background-color: darkorchid;
 }
 
+/* Estilo especial para elementos com a classe destaque dentro de .exercicio */
 .exercicio .destaque {
     border: solid 10px greenyellow;
     color: greenyellow;

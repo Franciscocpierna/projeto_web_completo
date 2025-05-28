@@ -10,15 +10,28 @@
     <div>Segundo</div>
     <div class="terceiro ultimo">.terceiro .ultimo</div>
     <script>              
+       // Adiciona a classe 'destaque' ao elemento com id 'primeiro'
        document.getElementById('primeiro').classList.add('destaque')
+
+       // Seleciona todas as divs da página
        const divs = document.getElementsByTagName('div')
+
+       // Remove a classe 'destaque' de todas as divs
        Array.from(divs).forEach(e => e.classList.remove('destaque') )
+
+       // Cria um array com todas as divs
        const divsArray = [...divs]
+
+       // Adiciona novamente a classe 'destaque' em todas as divs
        divsArray.forEach(e=> e.classList.add('destaque')) 
+
+       // Seleciona todos os elementos com a classe 'ultimo'
        const ultimosElementos = document.getElementsByClassName('ultimo')
+
+       // Remove a classe 'destaque' dos elementos com a classe 'ultimo'
        for(let e of ultimosElementos) {
          e.classList.remove('destaque')
        }
-    </script>
+</script>
 </body>
 </html>
