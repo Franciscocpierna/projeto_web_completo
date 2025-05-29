@@ -15,7 +15,29 @@
         <img src='http://files.cod3r.com.br/curso-web/logo-estreita.png' alt='logo'>
     </div>
     <script>
-        // ...
+         const img = document.querySelector('img') // Seleciona o elemento <img> da página
+
+        console.log('getAttribute', img.getAttribute('src')) // Mostra o valor do atributo 'src' via getAttribute
+        console.log('src', img.src) // Mostra o valor absoluto do src (URL completa)
+        console.log('["src"]', img['src']) // Mostra o valor do src acessando como propriedade do objeto
+        console.log('alt', img.alt) // Mostra o valor do atributo 'alt' da imagem
+
+        console.log('Elemento "img"...........')
+        console.log('NodeType', img.nodeType) // Mostra o tipo do nó (1 = elemento)
+        console.log('NodeName', img.nodeName) // Mostra o nome do nó ('IMG')
+
+        const src = img.getAttributeNode('src') // Obtém o nó do atributo 'src'
+        console.log('Atributo "src" .........')
+        console.log('NodeType', src.nodeType) // Mostra o tipo do nó do atributo (2 = atributo)
+        console.log('NodeName', src.nodeName) // Mostra o nome do nó do atributo ('src')
+        console.log('NodeValue', src.nodeValue) // Mostra o valor do nó do atributo (URL da imagem)
+
+        const link = document.querySelector('a') // Seleciona o elemento <a> da página
+        console.log('Elemento "a" .........')
+        console.log('href', link.href) // Mostra o valor absoluto do href (URL completa)
+        console.log('firstChild.nodeType', link.firstChild.nodeType) // Mostra o tipo do nó filho (3 = texto)
+        link.firstChild.nodeValue = 'Novo Texto' // Altera o texto do link diretamente no nó de texto
+        link.innerHTML='Novo Texto2' // Altera o conteúdo HTML do link para 'Novo Texto2'
     </script>
 </body>
 
