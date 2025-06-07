@@ -63,4 +63,5 @@ body {
     border: solid 10px greenyellow;
     color: greenyellow;
     font-weight: bold;
+    z-index: 100;
 }
