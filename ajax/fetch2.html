@@ -28,7 +28,48 @@
         <button>Salvar</button>
     </form>
     <div id="resultado"></div>
-    <script>
-        // ...
-    </script>
+        <script>
+        
+           // Define o evento de submit do formulário chamado usuarioForm
+           document.usuarioForm.onsubmit = async e => {
+            // Impede o envio padrão do formulário (recarregar a página)
+            e.preventDefault()
+
+            // Obtém o formulário que disparou o evento
+            const form = e.target
+            // Cria um objeto FormData com os dados do formulário
+            const data = new FormData(form)
+            // Adiciona um campo extra chamado 'ajax' com valor true
+            data.append('ajax', true)
+
+            // Define as opções para o fetch
+            const options = {
+                //define o método HTTP (por exemplo, 'POST' ou 'GET') que será usado na requisição fetch, pegando o valor do atributo method do formulário (form). Assim, o fetch usará o mesmo método especificado no formulário HTML.
+                method: form.method,
+                // Converte os dados do formulário para URLSearchParams (formato x-www-form-urlencoded)
+                body: new URLSearchParams(data)
+            }
+            const resultado = document.getElementById('resultado')
+            // // Envia a requisição para o servidor usando fetch
+            // fetch(form.action, options)
+            //       // Converte a resposta para JSON
+            //       .then(resp => resp.json())
+            //       // Exibe o resultado no elemento com id 'resultado'
+            //       .then(json => {
+                     
+            //          resultado.innerHTML = JSON.stringify(json)
+            //       })
+            //       .catch(e => {
+            //          resultado.innerHTML = e
+            //       })
+            try {
+                const resp = await fetch(form.action, options)
+                const json = await resp.json()
+                resultado.innerHTML = JSON.stringify(json)
+            }catch (e) {
+                resultado.innerHTML = e
+            }
+        }
+</script>
+    
 </body>
