@@ -12,6 +12,21 @@
     <h1>Estados</h1>
 
     <script>
-        // ...
+        // Aqui, a função axios faz uma requisição HTTP para o arquivo dados/estados.json. Quando a resposta chega, o código dentro do .then() é executado para processar os dados recebidos.
+
+        // Portanto, a requisição ocorre diretamente no script dentro da tag <script> no arquivo HTML, utilizando a biblioteca Axios.
+        const url = 'dados/estados.json'
+        axios(url).then(resp => {
+            //A requisição para o servidor neste programa é feita nesta linha:
+
+
+            const itens = resp.data.reduce(
+                (html, estado) => html + `<li>${estado.nome}</li>`,''
+            ) 
+            // Insere o HTML gerado (lista de estados) no final do corpo da página
+            // 'beforeend' - insere o conteúdo logo antes do fechamento da tag </body>
+            // `<ul>${itens}</ul>` - string HTML que representa a lista de estados
+            document.body.insertAdjacentHTML('beforeend', `<ul>${itens}</ul>`)
+        })
     </script>
 </body>
