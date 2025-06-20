@@ -1,0 +1,75 @@
+Esse problema ocorre pois, no seu gulpfile.js, você está usando:
+
+presets: ["env"]
+Porém o preset correto não se chama mais babel-preset-env. O nome correto no Babel 7+ é @babel/preset-env.
+
+Como resolver:
+
+1 - Corrija a linha no gulpfile.js:
+presets: ['@babel/preset-env']
+
+2 - Instale os pacotes corretos (caso não tenha ainda):
+Execute no terminal:
+correções gulp e no pacote json
+
+npm uninstall babel-core babel-preset-env
+npm install --save-dev @babel/core @babel/preset-env gulp-babel
+3 - Verifique se seu package.json tem algo assim:
+
+"devDependencies": {
+  "@babel/core": "^7.0.0",
+  "@babel/preset-env": "^7.0.0",
+  "gulp": "^4.0.2",
+  "gulp-babel": "^8.0.0",
+  ...
+}
+
+Resultado final do gulpfile.js corrigido:
+
+const { series } = require('gulp');
+const gulp = require('gulp');
+const concat = require('gulp-concat');
+const uglify = require('gulp-uglify');
+const babel = require('gulp-babel');
+ 
+function padrao() {
+  return gulp.src('src/**/*.js')
+    .pipe(babel({
+      comments: false,
+      presets: ['@babel/preset-env']
+    }))
+    .pipe(uglify())
+    .pipe(concat('codigo.min.js'))
+    .pipe(gulp.dest('build'));
+}
+ 
+exports.default = series(padrao);
+
+
+correções gulp
+
+
+O erro que você está enfrentando, acontece porque você provavelmente instalou uma versão muito antiga do Gulp (v1.0.0), que não é compatível com os plugins modernos nem com o Node.js atual.
+
+Como corrigir o erro:
+
+1 - Remova o Gulp antigo:
+npm uninstall gulp
+
+2 - Instale a versão correta do Gulp (4.x):
+npm install gulp@^4.0.2 --save-dev
+
+É importante usar gulp@^4.0.2 ou gulp@latest para garantir compatibilidade com a estrutura de tarefas do seu gulpfile.js.
+
+3 - Verifique seu package.json
+Ele deve mostrar algo como:
+
+"devDependencies": {
+  "gulp": "^4.0.2"
+}
+4 - Remova node_modules e package-lock.json (caso queira garantir):
+rm -rf node_modules package-lock.json
+
+5 - Reinstale as dependências:
+
+npm install

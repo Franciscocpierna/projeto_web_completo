@@ -8,7 +8,8 @@ function padrao(cb) {
     gulp.src('src/**/*.js')
            .pipe(babel({
             comments: false,
-            presets: ["env"]
+            //presets: ["env"]
+            presets: ['@babel/preset-env']
            })) 
            .pipe(uglify())
            .on('error', err => console.log(err))
