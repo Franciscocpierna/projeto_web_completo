@@ -1,9 +1,13 @@
 const webpack = require('webpack')
+const path = require('path');
+
+
+// module.exports = {
+//     mode: 'development',
+//     entry: '../src/principal.js'
+// }
 
 module.exports = {
     mode: 'development',
-    entry: 'src/principal.js'
-    
-    
-    
-}
+    entry: path.resolve(__dirname, '../src/principal.js')
+};
