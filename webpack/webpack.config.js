@@ -13,7 +13,7 @@ module.exports = {
     entry: './src/principal.js',
     output: {
          filename: 'principal.js',
-         path: path.resolve(__dirname, '\public'),
+         path: path.resolve(__dirname, 'public'),
          
      }
      
