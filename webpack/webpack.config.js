@@ -1,7 +1,15 @@
+const modoDev = process.env.NODE_ENV !== 'production'
+// REMOVA esta linha:
+// const uglifyJsplugin = require('uglifyjs-webpack-plugin')
 const webpack = require('webpack')
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin')
+// REMOVA esta linha duplicada:
+// const optimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin');
 
+//const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 // output: {
 //          filename: 'main.js',
 //          path: path.resolve(__dirname, 'dist'),
@@ -9,13 +17,22 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 //      }
 
 module.exports = {
-    mode: 'development',
+    mode: modoDev? 'development' : 'production',
     entry: './src/principal.js',
     output: {
          filename: 'principal.js',
          path: path.resolve(__dirname, 'public'),
          
      },
+     optimization: {
+    minimizer: [
+        new TerserPlugin({
+            cache: true,
+            parallel: true
+        }),
+        new OptimizeCSSAssetsPlugin({})
+    ]
+},
     plugins: [
         new MiniCssExtractPlugin({
             filename: "estilo.css"
