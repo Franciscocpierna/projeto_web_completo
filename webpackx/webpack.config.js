@@ -22,6 +22,10 @@ module.exports = {
          path: path.resolve(__dirname, 'public'),
          
      },
+    vevServer: {
+        contentBase: "./public",
+        port: 9000
+    }, 
     optimization: {
       minimizer: [new TerserPlugin({
         parallel: true,
