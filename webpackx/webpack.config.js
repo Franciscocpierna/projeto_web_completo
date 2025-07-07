@@ -22,8 +22,9 @@ module.exports = {
          path: path.resolve(__dirname, 'public'),
          
      },
-    vevServer: {
+    devServer: {
         contentBase: "./public",
+       // hot: true,
         port: 9000
     }, 
     optimization: {
