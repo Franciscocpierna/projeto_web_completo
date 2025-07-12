@@ -13,8 +13,25 @@
     <div id='conteudo1'></div>
     <div id='conteudo2'></div>
     <div id='conteudo3'></div>
+    <div>sem id</div>
 
     <script>
-        // ...
+      $('#conteudo1').append('<p>1</p>') 
+      //conteudo2  
+      const elementos = [   
+        $('<li></li>').append('Arroz'),
+        $('<li></li>').append('Feijão'),
+        $('<li></li>').append('Carne') 
+       ]   
+      const lista = $('<ul><li>Sorvete</li></ul>').prepend(elementos) 
+      $('#conteudo2').append(lista)
+      //conteudo 3
+      $('#conteudo3').append('<p>1</p>','<h1>2</h1>').
+       prepend('<h1>0</h1>')
+      $('#conteudo3').text('<p>123</p>') 
+      // Alterando todos
+      $('div[id]').html('<strong>Todos!</strong>') 
+
+
     </script>
 </body>
