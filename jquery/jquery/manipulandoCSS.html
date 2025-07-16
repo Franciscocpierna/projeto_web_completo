@@ -15,6 +15,38 @@
     <div id='div3'>3</div>
     <div id='resultado'></div>
     <script>
-        // ...
-    </script>
+        // Obtém a fonte atual do #div1 e exibe no #resultado
+const fonte = $('#div1').css('font-family')
+$('#resultado').append(`Fonte é ${fonte}`)
+
+// Altera o tamanho da fonte de #div1 para 3em
+$('#div1').css('font-size', '3em')
+
+// Altera o tamanho da fonte para 3.5em e a cor para amarelo
+$('#div1').css({'font-size': '3.5em', 'color': 'yellow'})
+
+// Define o tamanho da fonte usando uma função (resultado: 4em)
+$('#div1').css('font-size', function () {
+    return `${2*2}em`
+})
+
+// Adiciona a classe 'destaque' ao #div2
+$('#div2').addClass('destaque')
+
+// Verifica se #div2 possui a classe 'destaque' e exibe o resultado
+const temClasse = $('#div2').hasClass('destaque')
+$('#resultado').append(`<br>tem Class? ${temClasse}`)
+
+// Remove a classe 'destaque' de #div2
+$('#div2').removeClass('destaque')
+
+// Alterna a classe 'destaque' em #div2 (adiciona se não tiver, remove se tiver)
+// Remove a classe 'destaque' de #div2
+$('#div2').removeClass('destaque')
+
+// Alterna a classe 'destaque' em #div2 (adiciona se não tiver, remove se tiver)
+$('#div2').toggleClass('destaque')
+$('#div2').toggleClass('destaque')
+
+    </script>    
 </body>
