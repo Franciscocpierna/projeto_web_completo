@@ -28,29 +28,41 @@
     <div>Animar!</div>
 
     <script>
-        function alterarLargura(valor, duracao, callback) {
-            $('div').animate({width: `+=${valor}`}, duracao, callback)
-        }
+       // Função para alterar a largura do elemento <div> usando animação do jQuery
+function alterarLargura(valor, duracao, callback) {
+    // Anima a largura do <div> somando ou subtraindo o valor informado
+    $('div').animate({width: `+=${valor}`}, duracao, callback)
+}
 
-        function moverDiagonal(valor, duracao, callback) {
-            $('div').animate({top: `+=${valor}`, left: `+=${valor}`}, duracao, callback )
-        }
+// Função para mover o elemento <div> na diagonal (topo e esquerda) usando animação do jQuery
+function moverDiagonal(valor, duracao, callback) {
+    // Anima as propriedades 'top' e 'left' do <div> somando o valor informado
+    $('div').animate({top: `+=${valor}`, left: `+=${valor}`}, duracao, callback )
+}
 
-        function girar(valor, duracao, callback) {
-            $('div').animate({transform: `+=${valor}`},{
-               step: function (valor) {
-                 $(this).css('transform', `rotate(${valor}deg)`)
-               },
-               duration: duracao
-            }, 'linear', callback)
-        }
+// Função para girar o elemento <div> usando animação personalizada
+function girar(valor, duracao, callback) {
+    // O jQuery não anima 'transform' diretamente, então usamos o parâmetro 'step'
+    $('div').animate({transform: `+=${valor}`},{
+       step: function (valor) {
+         // Aplica a rotação ao <div> durante cada passo da animação
+         $(this).css('transform', `rotate(${valor}deg)`)
+       },
+       duration: duracao
+    }, 'linear', callback)
+}
 
-        alterarLargura(300, 100, () => {
-            alterarLargura(-300, 'slow', () => {
-                moverDiagonal(300, 6000, () => {
-                    girar(3300, 3000)
-                })
-            })
+// Sequência de animações encadeadas:
+// 1. Aumenta a largura em 300px
+// 2. Diminui a largura em 300px
+// 3. Move o <div> na diagonal em 300px
+// 4. Gira o <div> em 3300 graus
+alterarLargura(300, 100, () => {
+    alterarLargura(-300, 'slow', () => {
+        moverDiagonal(300, 6000, () => {
+            girar(3300, 3000)
         })
+    })
+})
     </script>
 </body>
