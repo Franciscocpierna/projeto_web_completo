@@ -68,8 +68,22 @@
     </h1>
     <hr>
 
-    <!-- Flex -->
-
+    <!-- Flex 
+    .d-flex.flex-column-reverse.p-2 
+    dentro da primeira
+    .align-self-end
+    .align-self-center
+    .align-self-start
+     sm -> não funciona o efeito em celular
+     lg -> só largo
+     xl -> extra grande
+     normal sem sigla
+    -->
+     <div class="d-sm-flex flex-column-reverse p-2">
+        <div class="align-self-end">1</div>
+        <div class="align-self-center">2</div>
+        <div class="align-self-start">3</div>
+     </div>
     <h1 class="mt-5">5. Imagens -
         <small>
             <a href="https://getbootstrap.com/docs/4.0/content/images/" target="_black">Documentação Oficial</a>
@@ -77,8 +91,19 @@
     </h1>
     <hr>
 
-    <!-- Imagens -->
+    <!-- Imagens 
+     .p-2
+     img.mx-auto.d-block[src="/imgs/img1.png" width="400"]
+    -->
+    <div class="p-2">
+     <img src="/imgs/img1.png" alt="Imagem 1" 
+     class="mx-auto d-block" width="400">
+     <img src="/imgs/img1.png" alt="Imagem 1" 
+     class="img-thumbnail" width="400">
+     <img src="/imgs/img1.png" alt="Imagem 1" 
+     class="img-fluid rounded-circle" width="400">
 
+    </div> 
     <h1 class="mt-5">6. Float -
         <small>
             <a href="https://getbootstrap.com/docs/4.0/utilities/float/" target="_black">Documentação Oficial</a>
