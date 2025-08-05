@@ -1,53 +1,66 @@
-const modoDev = process.env.NODE_ENV !== 'production'
-const webpack = require('webpack')
-const MiniCssExtractPlugin = require('mini-css-extract-plugin')
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
-const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const modoDev = process.env.NODE_ENV !== 'production';
+const path = require('path');
+const MiniCssExtractPlugin = require('mini-css-extract-plugin');
+const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
 
 module.exports = {
-    mode: modoDev ? 'development' : 'production',
-    entry: './src/index.js',
-    devServer: {
-        contentBase: './build',
-        port: 9000,
+  mode: modoDev ? 'development' : 'production',
+  entry: './src/index.js',
+  devServer: {
+    static: {
+      directory: path.join(__dirname, 'build'),
     },
-    optimization: {
-        minimizer: [
-            new UglifyJsPlugin({
-                cache: true,
-                parallel: true,
-                sourceMap: true
-            }),
-            new OptimizeCSSAssetsPlugin({})
-        ]
-    },
-    output: {
-        filename: 'app.js',
-        path: __dirname + '/build'
-    },
-    plugins: [
-        new MiniCssExtractPlugin({ filename: 'estilo.css' }),
-        new CopyWebpackPlugin([
-            { context: 'src/', from: '**/*.html' },
-            { context: 'src/', from: 'imgs/**/*' }
-        ])
+    port: 9000,
+    open: true,
+  },
+  optimization: {
+    minimize: true,
+    minimizer: [
+      new TerserPlugin(),
+      new CssMinimizerPlugin(),
     ],
-    module: {
-        rules: [{
-            test: /\.s?[ac]ss$/,
-            use: [
-                MiniCssExtractPlugin.loader,
-                // 'style-loader', // Adiciona CSS a DOM injetando a tag <style>
-                'css-loader', // interpreta @import, url()...
-                'sass-loader',
-            ]
-        }, {
-            test: /\.(png|svg|jpg|gif)$/,
-            use: ['file-loader']
-        }, {
-            test: /.(ttf|otf|eot|svg|woff(2)?)$/,
-            use: ['file-loader']
-        }]
-    }
-}
+  },
+  output: {
+    filename: 'app.js',
+    path: path.resolve(__dirname, 'build'),
+    assetModuleFilename: 'assets/[hash][ext][query]'
+  },
+  plugins: [
+    new MiniCssExtractPlugin({
+      filename: 'estilo.css',
+    }),
+    new CopyWebpackPlugin({
+      patterns: [
+        { from: 'src/index.html', to: 'index.html' },
+        { from: 'src/imgs', to: 'imgs' },
+      ],
+    }),
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.s?[ac]ss$/,
+        use: [
+          MiniCssExtractPlugin.loader,
+          'css-loader',
+          {
+            loader: 'sass-loader',
+            options: {
+              implementation: require('sass'),
+              sassOptions: {
+                // Esta linha instrui o sass-loader a procurar na pasta node_modules
+                includePaths: [path.resolve(__dirname, 'node_modules')],
+              },
+            },
+          },
+        ],
+      },
+      {
+        test: /\.(png|jpe?g|gif|svg|eot|ttf|woff|woff2)$/i,
+        type: 'asset/resource',
+      },
+    ],
+  },
+};
