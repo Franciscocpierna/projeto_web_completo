@@ -27,7 +27,7 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     assetModuleFilename: 'assets/[hash][ext][query]'
   },
-  plugins: [
+ plugins: [
     new MiniCssExtractPlugin({
       filename: 'estilo.css',
     }),
@@ -35,6 +35,7 @@ module.exports = {
       patterns: [
         { from: 'src/index.html', to: 'index.html' },
         { from: 'src/imgs', to: 'imgs' },
+        { from: 'src/pages', to: 'pages' },
       ],
     }),
   ],
