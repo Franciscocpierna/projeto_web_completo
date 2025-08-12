@@ -1,4 +1,5 @@
 const modoDev = process.env.NODE_ENV !== 'production';
+const webpack = require('webpack');
 const path = require('path');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CssMinimizerPlugin = require('css-minimizer-webpack-plugin');
@@ -27,16 +28,18 @@ module.exports = {
     path: path.resolve(__dirname, 'build'),
     assetModuleFilename: 'assets/[hash][ext][query]'
   },
- plugins: [
-    new MiniCssExtractPlugin({
-      filename: 'estilo.css',
-    }),
+  plugins: [
+    new MiniCssExtractPlugin({ filename: 'estilo.css' }),
     new CopyWebpackPlugin({
       patterns: [
         { from: 'src/index.html', to: 'index.html' },
         { from: 'src/imgs', to: 'imgs' },
         { from: 'src/pages', to: 'pages' },
       ],
+    }),
+    new webpack.ProvidePlugin({
+      $: 'jquery',
+      jQuery: 'jquery',
     }),
   ],
   module: {
