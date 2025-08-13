@@ -1,5 +1,6 @@
 import $ from 'jquery';
- 
+
+
 const loadHtmlSuccessCallbacks = [];
 export function onLoadHtmlSuccess(callback) {
   if (typeof callback === 'function') {
