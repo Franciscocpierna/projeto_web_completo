@@ -1,7 +1,8 @@
 
 import React from 'react'; // Importa a biblioteca React, necessária para JSX funcionar
 import ReactDOM from 'react-dom/client'; // Importa o novo método de renderização do React 18+
-
+import Primeiro from './componentes/Primeiro';
+import BBomDia from './componentes/BomDia';
 import Pai from './componentes/Pai'; // Importa o componente Pai
 import Filho from './componentes/Filho'; // Importa o componente Filho
 
@@ -16,6 +17,8 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
     <div>
         <h1>React</h1> {/* Título principal da página */}
+        <Primeiro />
+        <BBomDia />
         <Pai nome="Paulo" sobrenome="Silva"> {/* Componente Pai recebe props nome e sobrenome */}
             <Filho nome="Pedro" /> {/* Componente Filho recebe prop nome */}
             <Filho nome="Paulo" />
