@@ -1,11 +1,23 @@
+/* Seleciona o elemento HTML com a classe 'display' */
 .display {
+    /* Faz o elemento ocupar 4 colunas no grid,
+       o que o estende por toda a largura da calculadora. */
     grid-column: span 4;
+    /* Define uma cor de fundo preta com 4% de opacidade (transparência).
+       Isso cria um efeito de tela levemente escura. */
     background-color: #0004;
 
+    /* Configura o elemento como um contêiner flexível. */
     display: flex;
+    /* Alinha o conteúdo (o texto do visor) ao lado direito do contêiner. */
     justify-content: flex-end;
+    /* Alinha o conteúdo verticalmente ao centro do contêiner. */
     align-items: center;
+    /* Adiciona um preenchimento interno de 20 pixels em todos os lados. */
     padding: 20px;
+    /* Define o tamanho da fonte em 2.1 vezes o tamanho padrão. */
     font-size: 2.1em;
+    /* Garante que qualquer conteúdo que ultrapasse o espaço
+       da caixa será cortado (escondido), evitando quebra de linha indesejada. */
     overflow: hidden;
 }
