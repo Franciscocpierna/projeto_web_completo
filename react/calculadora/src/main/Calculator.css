@@ -1,0 +1,24 @@
+/* Seleciona o elemento HTML com a classe 'calculator' */
+.calculator {
+    /* Define a altura da calculadora em pixels */
+    height: 320px;
+    /* Define a largura da calculadora em pixels */
+    width: 235px;
+    /* Adiciona bordas arredondadas com um raio de 5 pixels */
+    border-radius: 5px;
+    /* Garante que qualquer conteúdo que exceda as dimensões
+       da caixa será cortado (escondido) */
+    overflow: hidden;
+    
+    /* Configura o elemento como um grid container,
+       permitindo o uso de grid para o layout dos botões */
+    display: grid;
+    /* Define 4 colunas com largura de 25% cada,
+       garantindo que os botões se ajustem horizontalmente */
+    grid-template-columns: repeat(4, 25%);
+    /* Define as linhas do grid:
+       - A primeira linha (o display) ocupa 1 'fraction' (1fr),
+         que é o espaço restante após as outras linhas serem definidas.
+       - As próximas 5 linhas (para os botões) têm uma altura fixa de 48 pixels. */
+    grid-template-rows: 1fr 48px 48px 48px 48px 48px;
+}
