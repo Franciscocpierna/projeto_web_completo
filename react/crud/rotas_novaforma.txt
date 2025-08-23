@@ -1,0 +1,62 @@
+Atualização do React-Router-Dom
+Olá pessoas! Nas próximas aulas vamos aprender como definir as rotas da nossa aplicação, e com o advento do 
+React Routerv6 o componente Switch deixou de existir, e as rotas passaram a ser implementadas com o uso do componente Routes.
+
+Então antes de começar vamos instalar o react-router-dorm com o seguinte comando:
+
+npm install react-router-dom@6
+Feito essa instalação, fique atento que o professor vai importar nas aulas componentes do react-router. 
+Só que você vai importar o os componentes do react-router-dom, dessa forma:
+
+import { Routes, Route } from "react-router-dom";
+Então ao invés de implementarmos nossas rotas assim:
+
+
+Passamos a implementar assim:
+
+
+Perceba que a forma como referenciamos nossos componentes também está diferente, ao invés 
+de passarmos o componente como children (filho) agora passamos como props.
+
+
+Logo depois no arquivo App.jsx, o professor faz a seguinte importação: import { HashRouter } from " react-router-dom ". 
+Não é para você fazer essa importação, você terá que importar:
+
+import { BrowserRouter } from 'react-router-dom'
+Seu arquivo App.jsx tem que ficar da seguinte forma:
+
+
+Conclusão:
+Vimos que o Switch não existe mais então onde o professor importar/usar o Switch, 
+você importará/utilizará o Routes, tomando cuidado também para passar o componente como propriedade 
+e não mais como filho. Um abraço e bons estudos! : )
+
+
+o Nav
+// Importa o arquivo de estilo CSS específico para este componente.
+import './Nav.css'
+// Importa a biblioteca principal do React.
+import React from 'react'
+// Importa o componente 'Link' da biblioteca React Router, usado para navegar entre as rotas.
+import { Link } from 'react-router-dom'
+
+// Exporta o componente funcional.
+// Ele recebe as 'props' (propriedades) mas não as usa neste caso.
+export default props =>
+    // A tag <aside> é usada para o menu lateral, uma área de conteúdo secundária.
+    <aside className="menu-area">
+        // A tag <nav> é usada para definir a área de navegação.
+        <nav className="menu">
+            {/* O componente Link substitui a tag <a> padrão do HTML. */}
+            {/* Ele navega para a rota "/" (página inicial) sem recarregar a página. */}
+            <Link to="/">
+                {/* A tag <i> é usada para exibir um ícone (da fonte Font Awesome). */}
+                <i className="fa fa-home"></i> Início
+            </Link>
+            
+            {/* Este Link navega para a rota "/users" (página de usuários). */}
+            <Link to="/users">
+                <i className="fa fa-users"></i> Usuários
+            </Link>
+        </nav>
+    </aside>
