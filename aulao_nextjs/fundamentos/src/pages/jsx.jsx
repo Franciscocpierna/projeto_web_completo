@@ -7,7 +7,7 @@ export default function  Jsx(){
    }
    return (
       <div>
-         {titulo}
+        {titulo}
         {a + b}
         <br />
         <br />
