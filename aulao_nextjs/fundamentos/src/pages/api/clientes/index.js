@@ -9,6 +9,7 @@ export default function handler(req, res) {
     
 }   
 function handleGet(req, res){
+      
         res.status(200).json({
             id: 3,
             nome: 'Maria',
