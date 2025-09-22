@@ -1,44 +1,66 @@
+// no arquivo useClientes.ts
+
 import { useEffect, useState } from "react"
 import ColecaoCliente from "../backend/db/ColecaoCliente"
 import Cliente from "../core/Cliente"
 import ClienteRepositorio from "../core/ClienteRepositorio"
-import useTabelaOuForm from "./useTabelaOuForm"
 
 export default function useClientes() {
     const repo: ClienteRepositorio = new ColecaoCliente()
 
-    const { tabelaVisivel, exibirTabela, exibirFormulario } = useTabelaOuForm()
-
+    const [tabelaVisivel, setTabelaVisivel] = useState(true)
     const [cliente, setCliente] = useState<Cliente>(Cliente.vazio())
     const [clientes, setClientes] = useState<Cliente[]>([])
+    const [isSaving, setIsSaving] = useState(false);
 
-    useEffect(obterTodos, [])
+    useEffect(() => {
+        obterTodos()
+    }, [])
 
     function obterTodos() {
         repo.obterTodos().then(clientes => {
             setClientes(clientes)
-            exibirTabela()
+            setTabelaVisivel(true)
         })
     }
 
     function selecionarCliente(cliente: Cliente) {
         setCliente(cliente)
-        exibirFormulario()
+        setTabelaVisivel(false)
     }
 
     async function excluirCliente(cliente: Cliente) {
-        await repo.excluir(cliente)
-        obterTodos()
+        try {
+            await repo.excluir(cliente)
+            setClientes(clientes.filter(c => c.id !== cliente.id));
+        } catch (e) {
+            alert("Não foi possível excluir o cliente. Verifique as regras do Firebase.");
+        } finally {
+            setTabelaVisivel(true)
+        }
     }
 
     function novoCliente() {
         setCliente(Cliente.vazio())
-        exibirFormulario()
+        setTabelaVisivel(false)
+        setIsSaving(false)
     }
 
     async function salvarCliente(cliente: Cliente) {
-        await repo.salvar(cliente)
-        obterTodos()
+        setIsSaving(true);
+        try {
+            const clienteSalvo = await repo.salvar(cliente);
+            const clientesAtualizados = cliente.id
+                ? clientes.map(c => c.id === clienteSalvo.id ? clienteSalvo : c)
+                : [...clientes, clienteSalvo];
+
+            setClientes(clientesAtualizados);
+        } catch (e) {
+            alert("Não foi possível salvar o cliente. Verifique as regras do Firebase.");
+        } finally {
+            setIsSaving(false);
+            setTabelaVisivel(true);
+        }
     }
 
     return {
@@ -50,6 +72,7 @@ export default function useClientes() {
         selecionarCliente,
         obterTodos,
         tabelaVisivel,
-        exibirTabela
+        setTabelaVisivel,
+        isSaving
     }
 }
