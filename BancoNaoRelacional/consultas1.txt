@@ -1,10 +1,39 @@
+// db.estados.find() - Retorna todos os documentos (registros) na coleção 'estados'.
+// Os resultados são exibidos em formato JSON na mesma linha (sem formatação).
 db.estados.find()
+
+// db.estados.find().pretty() - Retorna todos os documentos na coleção 'estados', 
+// mas formata a saída de forma legível (com indentação e quebras de linha).
 db.estados.find().pretty()
+
+// db.estados.findOne() - Retorna APENAS o primeiro documento encontrado na coleção 'estados'.
 db.estados.findOne()
+
+// db.estados.findOne({sigla: "RJ"}) - Retorna o primeiro documento que satisfaz a condição
+// (documento onde o campo 'sigla' é igual a "RJ").
 db.estados.findOne({sigla: "RJ"})
+
+// db.estados.find({$or: [{sigla: "RJ"}, {sigla: "AC"}]}).pretty() - Retorna todos os documentos
+// onde o campo 'sigla' é "RJ" OU (operador $or) onde o campo 'sigla' é "AC". O resultado é formatado.
 db.estados.find({$or: [{sigla: "RJ"}, {sigla: "AC"}]}).pretty()
+
+// db.estados.find({populacao: {$exists: true}}).pretty() - Retorna todos os documentos
+// que POSSUEM o campo 'populacao' definido (o valor pode ser null, mas o campo deve existir).
 db.estados.find({populacao: {$exists: true}}).pretty()
+
+// db.estados.find().skip(1).limit(2) - Retorna todos os documentos, mas PULA o primeiro registro
+// e LIMITA o resultado aos próximos dois registros (ótimo para paginação).
 db.estados.find().skip(1).limit(2)
+
+// db.estados.count() - Retorna a contagem total de documentos (registros) na coleção 'estados'.
+// NOTA: Em versões mais recentes do mongosh, o comando preferencial é db.estados.countDocuments().
 db.estados.count()
+
+// db.estados.find({sigla: "SP"}, {nome: 1, sigla: 1, _id: 0}) - Retorna o documento onde 'sigla' é "SP",
+// mas PROJETA (mostra) apenas os campos 'nome' e 'sigla'. O campo '_id' é explicitamente omitido (0).
 db.estados.find({sigla: "SP"}, {nome: 1, sigla: 1, _id: 0})
+
+// db.estados.find({sigla: "SP"}, {"cidades.nome": 1, _id: 0}) - (Comando para subdocumentos) 
+// Retorna o documento onde 'sigla' é "SP" e PROJETA (mostra) apenas o campo 'nome'
+// DENTRO do array ou subdocumento 'cidades'. O campo '_id' é omitido.
 db.estados.find({sigla: "SP"}, {"cidades.nome": 1, _id: 0})
