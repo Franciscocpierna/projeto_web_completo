@@ -2,9 +2,50 @@ db.estados.update({sigla: "SP"},{$set: {populacao: 45340000}})
 
 db.estados.update({sigla: "AL"},{$set: {cidades: [{nome: "Sergipe"}]}})
 
-db.estados.update(
-    {sigla: "SP"},
-    {$push: {cidades: {nome: "Santos", populacao: 433966}}}
+db.estados.find({populacao: {$exists: true}}, {_id: 0, nome: 1})
+
+db.estados.updateOne(
+  // 1. Filtro: Encontra o estado "SP" E a cidade específica pelo NOME "Garulhos"
+  { 
+    "sigla": "SP", 
+    "cidades.nome": "Garulhos" // <-- FILTRO AGORA USA O NOME
+  },
+  
+  // 2. Atualização: Usa $set com o operador posicional $ para definir o novo nome
+  { 
+    $set: { 
+      "cidades.$.nome": "Guarulhos" 
+    } 
+  }
 )
 
-db.estados.find({populacao: {$exists: true}}, {_id: 0, nome: 1})
+db.estados.updateOne(
+  // 1. Filtro: Encontra o documento do estado (pelo seu _id) E a cidade específica dentro do array 'cidades' (pelo seu _id)
+  { 
+    "_id": ObjectId('68f13b1d00be70c548cebea9'), 
+    "cidades._id": ObjectId('68f13b1d00be70c548cebea7') 
+  },
+  
+  // 2. Atualização: Usa $set com o operador posicional $ para modificar o campo 'nome' 
+  // APENAS no subdocumento que atendeu ao filtro.
+  { 
+    $set: { 
+      "cidades.$.nome": "Guarulhos" 
+    } 
+  }
+)
+
+db.estados.updateOne(
+  // 1. Filtro: Encontra o documento do estado (usando a sigla "SP") E a cidade específica dentro do array 'cidades' (pelo seu _id)
+  { 
+    "sigla": "SP", // <--- ALTERADO PARA USAR A SIGLA
+    "cidades._id": ObjectId('68f13b1d00be70c548cebea7') 
+  },
+  
+  // 2. Atualização: Usa $set com o operador posicional $
+  { 
+    $set: { 
+      "cidades.$.nome": "Guarulhos" 
+    } 
+  }
+)

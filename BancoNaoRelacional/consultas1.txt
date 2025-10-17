@@ -37,3 +37,11 @@ db.estados.find({sigla: "SP"}, {nome: 1, sigla: 1, _id: 0})
 // Retorna o documento onde 'sigla' é "SP" e PROJETA (mostra) apenas o campo 'nome'
 // DENTRO do array ou subdocumento 'cidades'. O campo '_id' é omitido.
 db.estados.find({sigla: "SP"}, {"cidades.nome": 1, _id: 0})
+
+db.estados.find().forEach(function(estado) {
+  // O comando printjson() exibe o objeto JavaScript 'estado' de forma formatada (como o .pretty()).
+  printjson(estado); 
+  
+  // Opcional: Você pode adicionar uma linha de separação para melhor visualização
+  print('----------------------------------------------------');
+});
