@@ -68,7 +68,8 @@ app.get('/opa', (req, res, next) => {
 })
 
 app.use((req, res) => {
-    console.log('Depois...')
+   console.log('Depois...')
+   res.send(res.send('<h1>Estou bem!</h1><br><br><h2>Tipo é HTML!</h2>'))
 })
 
 app.listen(3000, () => {
