@@ -2,7 +2,7 @@ const { db } = require('./.env')
 
 module.exports = {
 	client: 'postgresql',
-	//connection: db,
+	connection: db, //
 	connection: {
 		database: 'Knowledge_final',
 		user: 'postgres',

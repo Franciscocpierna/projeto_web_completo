@@ -1,2 +1,6 @@
 $env:NODE_OPTIONS="--openssl-legacy-provider"
 npm run serve -- --port 8081
+
+
+
+\c knowledge_final
