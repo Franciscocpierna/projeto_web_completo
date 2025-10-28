@@ -4,3 +4,6 @@ npm run serve -- --port 8081
 
 
 \c knowledge_final
+
+
+ psql -U postgres
