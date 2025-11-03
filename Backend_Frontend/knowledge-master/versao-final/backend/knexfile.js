@@ -1,35 +1,21 @@
-/*const { db } = require('./.env')
-
+const { db } = require('./.env');
+ 
 module.exports = {
-	client: 'postgresql',
-	connection: db,
-	pool: {
-		min: 2,
-		max: 10
-	},
-	migrations: {
-		tableName: 'knex_migrations'
-	}
-};
-*/
-
-const { db } = require('./.env')
-
-module.exports = {
-	client: 'postgresql',
-	connection:{
-		//host: '127.0.0.1', // ADICIONE ESTA LINHA! por IA
-		database: 'knowledge_final',
-		user: 'postgres',
-		password: 'pierna' 
-	},	
-	pool: {
-		min: 2,
-		max: 10,
-		acquireTimeoutMillis: 30000,
-	    idleTimeoutMillis: 30000
-	},
-	migrations: {
-		tableName: 'knex_migrations'
-	}
+  client: 'postgresql',
+  connection: {
+    host: db.host || 'localhost',
+    port: db.port || 5432,
+    database: db.database || 'knowledge_final',
+    user: db.user || 'postgres',
+    password: db.password || 'pierna',
+  },
+  pool: {
+    min: 0,
+    max: 5,
+    acquireTimeoutMillis: 60000,
+    idleTimeoutMillis: 30000,
+  },
+  migrations: {
+    tableName: 'knex_migrations',
+  },
 };
