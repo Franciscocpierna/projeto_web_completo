@@ -19,13 +19,23 @@
   module.exports = {
     client: 'postgresql',
     connection: {
-        host: '127.0.0.1',       // ⬅️ CRUCIAL: Adicionado o Host para evitar Timeout
-        port: 5432,              // ⬅️ Adicionado a Porta padrão do PostgreSQL (Recomendado)
-        database: 'knowledge',   // NOME CONFIRMADO: Usando 'knowledge'
-        user: 'postgres',
-        password: 'pierna'       
+       host: 'localhost',       // ⬅️ CRUCIAL: Adicionado o Host para evitar Timeouthost: '127.0.0.1',
+       user: 'postgres',                        // ⬅️ Adicionado a Porta padrão do PostgreSQL (Recomendado)port: 5432,
+       database: 'knowledge',   // NOME CONFIRMADO: Usando 'knowledge'
+       password: 'pierna'       
     },
-    pool: {
+    pool: { min: 2, max: 20 },
+    migrations: {
+        tableName: 'knex_migrations'
+    }
+};
+
+
+
+
+
+/*
+ pool: {
         min: 2,
         max: 20,
         // Opcional: debug para rastrear conexões
@@ -37,7 +47,5 @@
         
 
     },
-    migrations: {
-        tableName: 'knex_migrations'
-    }
-};
+
+*/
