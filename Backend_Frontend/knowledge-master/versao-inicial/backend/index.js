@@ -8,6 +8,7 @@ app.db = db
 consign()
     // ... outras configurações
     .then('./config/middlewares.js')
+    .then('./api/validation.js')
     .then('./api')
     .then('./config/routes.js')     // ⬅️ PASSO 2: Carrega as rotas que USAM o Passport
     .into(app)

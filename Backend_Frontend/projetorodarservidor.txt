@@ -7,3 +7,5 @@ npm run serve -- --port 8081
 
 
  psql -U postgres
+
+ Get-Service -Name postgresql*     ver se o seviço postgres esta ativo 

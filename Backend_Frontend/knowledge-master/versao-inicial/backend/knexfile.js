@@ -16,7 +16,7 @@
     }
   };*/
 
-  module.exports = {
+ /* module.exports = {
     client: 'postgresql',
     connection: {
        host: 'localhost',       // ⬅️ CRUCIAL: Adicionado o Host para evitar Timeouthost: '127.0.0.1',
@@ -30,7 +30,28 @@
     }
 };
 
+*/
 
+
+module.exports = {
+  client: 'postgresql',
+  connection: {
+    host: 'localhost',
+    port: 5432,
+    user: 'postgres',
+    database: 'knowledge',
+    password: 'pierna'
+  },
+  pool: {
+    min: 2,
+    max: 10,
+    acquireTimeoutMillis: 60000,
+    idleTimeoutMillis: 30000
+  },
+  migrations: {
+    tableName: 'knex_migrations'
+  }
+};
 
 
 
