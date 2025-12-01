@@ -1,6 +1,11 @@
-$env:NODE_OPTIONS="--openssl-legacy-provider"
-npm run serve -- --port 8081
+para iniciar o serve Frontend as duas linhas abaixo
+no meu caso 3000
 
+$env:NODE_OPTIONS="--openssl-legacy-provider"
+npm run serve -- --port 3000
+
+para o Backend
+npm start 
 
 
 \c knowledge_final

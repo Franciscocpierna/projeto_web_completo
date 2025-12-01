@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt-nodejs')
 
 module.exports = app => {
     // 1. Carrega as funções de validação (necessárias para 'save')
-    const { existsOrError, notExistsOrError, equalsOrError } = require('./validation')
+    const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation //require('./validation')
 
     // 2. Define a função de encriptação da senha (privada)
     const encryptPassword = password => {
