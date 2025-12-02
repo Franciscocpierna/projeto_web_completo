@@ -8,7 +8,7 @@ para o Backend
 npm start 
 
 
-\c knowledge_final
+\c knowledge
 
 
  psql -U postgres
