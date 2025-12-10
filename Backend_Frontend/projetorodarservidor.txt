@@ -18,3 +18,5 @@ npm start
  
  localhos:3000/signin
  bearer  com um espaço mais o token
+ no frontend
+ npm run serve
