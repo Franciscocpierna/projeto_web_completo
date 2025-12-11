@@ -65,6 +65,7 @@ export default {
         align-items: center;
     }
 
+  
     .auth-modal {
         background-color: #FFF;
         width: 350px;
