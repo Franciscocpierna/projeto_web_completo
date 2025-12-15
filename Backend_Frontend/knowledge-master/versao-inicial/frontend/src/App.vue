@@ -1,12 +1,12 @@
 <template>
-  <div id="app" :class="{'hidden-menu': !isMenuVisible} ">
+  <div id="app" :class="{'hidden-menu': !isMenuVisible || !user}">
     <!-- Os componentes são importados no <script> e mapeados para as áreas do Grid no CSS -->
     <Header title="Cod3r - Base de conhecimento" 
-	:hideToggle="true" 
-	:hideUserDropdown="false"
+	:hideToggle="!user" 
+	:hideUserDropdown="!user"
 	/> 
      
-    <Menu /> 
+    <Menu v-if="user" /> 
     <Content /> 
     <Footer />
   </div>
@@ -29,7 +29,7 @@ export default {
     Content, 
     Footer 
   },
-  computed: mapState(['isMenuVisible'])
+  computed: mapState(['isMenuVisible'], 'user')
 }
 </script>
 
