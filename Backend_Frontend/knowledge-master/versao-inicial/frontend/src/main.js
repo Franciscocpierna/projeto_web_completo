@@ -4,6 +4,7 @@ import Vue from 'vue'
 import './config/bootstrap'
 import './config/msgs'
 import './config/mq'
+import './config/axios'
 
 import store from './config/store'
 import router from './config/router'
